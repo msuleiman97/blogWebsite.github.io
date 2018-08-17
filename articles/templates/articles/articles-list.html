@@ -1,0 +1,16 @@
+{% extends 'base_layout.html' %}
+
+{% block content%}
+    <h1>Articles List</h1>
+    <div class="articles">
+    {% for article in articles %}
+        <div class="article">
+            <h2><a href="{% url 'articles:detail' slug=article.slug %}" class="title">{{ article.title }}</a></h2>
+             <img src="{{ article.thumb.url }}" class="thumb-img" />
+            <p>{{ article.snippet  }} <a href="{% url 'articles:detail' slug=article.slug %}"><span class="more" style="color: #8a8282 !important; cursor: pointer;">...more</span></a></p>
+            <p>{{ article.date }}</p>
+            <p class="author">added by {{ article.author.username }}</p>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}
