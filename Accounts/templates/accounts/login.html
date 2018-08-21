@@ -1,8 +1,11 @@
 {% extends 'base_layout.html' %}
 
+{% block head %}
+<title>Login</title>
+{% endblock %}
 {% block content %}
  <h2>Login</h2>
-
+<div class="login">
 <form class="site-form" action="{% url 'accounts:login'%}" method="post" >
     {% csrf_token %}
     {{form}}
@@ -12,6 +15,6 @@
     {% endif %}
   <input type="submit" value="Login"> 
 </form>
-
- 
+</div>
+ <br><br><br><br><br><br><br><br><br><br>
 {% endblock  %}
