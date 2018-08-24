@@ -191,7 +191,7 @@ a.highlight{
     border-radius: 3px;
 }
 .profile{
-    min-height: 2000px;
+    
     border:2px solid #856404;
     border-radius: 3px;
 }
@@ -220,6 +220,16 @@ nav ul li{
 }
 .login_logout ul li{
     
+}
+a.btn-primary{
+    float: right !important;
+    
+}
+#id_password{
+    display: none !important;
+}
+.helptext{
+     display: none !important;
 }
 
 @media (max-width: 767.98px){
@@ -250,5 +260,14 @@ nav ul li{
     .name-city{
         margin-left: 0px;
     }
-
+    .img-round img {
+    border: 2px solid #856404;
+    height: 180px;
+     width: 180px; 
+    float: left;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    background-color: gainsboro;
+}
+ 
 } 

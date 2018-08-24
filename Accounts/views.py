@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import AuthenticationForm
-from .forms import RegistrationForm,EditProfileForm
+from .forms import RegistrationForm,EditProfileForm,EditProfileFormUser
 from django.contrib.auth import logout
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
@@ -53,7 +53,7 @@ def login_view(request):
             if 'next' in request.POST:
                 return redirect(request.POST.get('next'))
             else:
-                return redirect('articles:list')
+                return redirect('accounts:porfile')
     else:
         form=AuthenticationForm()
     return render(request, 'accounts/login.html',{'form':form})
@@ -70,21 +70,23 @@ def logout_view(request):
         
 @login_required(login_url='/accounts/login/')     
 def profile(request):
-    profile=request.user.UserProfile
-    args={'user':request.user ,'profile':profile}
+    user=request.user
+    args={'user':user }
     return render(request,'accounts/profile.html',args)
 def friends(request):
     return render(request,'accounts/friends.html')
 
 def edit_profile(request):
     if request.method == 'POST':
+        formuser= EditProfileFormUser(request.POST, instance=request.user)
         form=EditProfileForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            return redirect("/accounts/profile")
+            return redirect('accounts:porfile')
     else:
         form =EditProfileForm(instance=request.user)
-        args= {'form':form}
+        formuser= EditProfileFormUser(request.POST, instance=request.user)
+        args= {'form':form,'formuser':formuser}
         return render(request,'accounts/edit_profile.html', args)
            
 def change_password(request):

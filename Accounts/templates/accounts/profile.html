@@ -15,10 +15,13 @@
 {% endblock %} 
 
 {% block content %}
-<br> <center><h1>Edit Profile</h1></center>
+<br> <h1>Profile info </h1>
 <br>
 <div class="container profile">
     <br>
+   <!-- <div class="edi-button">
+       <a href="{% url 'accounts:edit-porfile'%}"><button type="button" class="btn btn-primary" style="float: right!important">edit profile  <i class="fa fa-pencil" aria-hidden="true"></i></button></a> 
+    </div> -->
   	
 	<div class="row">
       <!-- left column -->
@@ -45,26 +48,26 @@
           <i class="fa fa-coffee"></i>
           This is an <strong>.alert</strong>. Use this to show important messages to the user.
         </div> -->
-        <h3>Personal info</h3>
+        
         
         <form class="form-horizontal" role="form">
           <div class="form-group">
             <label class="col-lg-3 control-label">First name:</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" value="{{user.first_name}}">
+              <input class="form-control" type="text" value="{{user.first_name}}" readonly>
             </div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label">Last name:</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" value="{{user.last_name}}">
+              <input class="form-control" type="text" value="{{user.last_name}}" readonly>
             </div>
           </div>
 
           <div class="form-group">
             <label class="col-lg-3 control-label">Email:</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" value="{{user.email}}">
+              <input class="form-control" type="text" value="{{user.email}}" readonly>
             </div>
           </div>
             <!--
@@ -89,30 +92,29 @@
           <div class="form-group">
             <label class="col-md-3 control-label">Username:</label>
             <div class="col-md-8">
-              <input class="form-control" type="text" value="{{user}}">
+              <input class="form-control" type="text" value="{{user}}" readonly>
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-3 control-label">Password:</label>
+            <label class="col-md-3 control-label">Bio:</label>
             <div class="col-md-8">
-              <input class="form-control" type="password" value="11111122333">
+              <input class="form-control" type="text" value="{{ user.userprofile.bio }}" readonly>
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-3 control-label">Confirm password:</label>
+            <label class="col-md-3 control-label">City:</label>
             <div class="col-md-8">
-              <input class="form-control" type="password" value="11111122333">
+              <input class="form-control" type="text" value="{{ user.userprofile.city }}" readonly>
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-3 control-label"></label>
+            <label class="col-md-3 control-label">phone :</label>
             <div class="col-md-8">
-                <p>Description: {{ user.userprofile.bio }}</p>
-    <p>Phone: {{ user.userprofile.phone }}</p>
-    <p>City: {{ user.userprofile.city }}</p>
-    <p>Website: {{ user.userprofile.website }}</p>
+              <input class="form-control" type="text" value="{{ user.userprofile.phone }}" readonly>
+            </div>
+  
 
-            </div>
+            
           </div>
         </form>
       </div>

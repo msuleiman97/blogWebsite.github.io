@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from . models import UserProfile
 from django.contrib.auth.forms import UserCreationForm,UserChangeForm
-
+from django.views.generic.edit import UpdateView
 
 
 
@@ -33,18 +33,23 @@ class RegistrationForm(UserCreationForm):
         
 class EditProfileForm(UserChangeForm):
     class Meta:
-        model=User
+        model=UserProfile
         fields=(
-        'email',
-        'first_name',
-        'last_name',
-        'password',
+
+        'bio',
+        'image',
+        'city',
+        'phone',
+        'website',
+        'password'
+        
         )
-            
-            
-            
-#image
-#class ProfileForm(forms.ModelForm):
-  #  class Meta:
-  #      model = UserProfile
-   #     fields = ('bio', 'location', 'birth_date')
+class EditProfileFormUser(UserChangeForm):
+    class Meta:
+        model = User
+        fields = (
+            'email',
+            'first_name',
+            'last_name',
+            'password'
+        )
